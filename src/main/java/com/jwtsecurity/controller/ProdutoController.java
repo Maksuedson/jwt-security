@@ -1,6 +1,9 @@
 package com.jwtsecurity.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,5 +22,10 @@ public class ProdutoController {
 	@PostMapping
 	public void save(@RequestBody Produto produto) {
 		repo.save(produto);
+	}
+	
+	@GetMapping
+	public List<Produto> listar(){
+		return repo.findAll();
 	}
 }
