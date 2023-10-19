@@ -1,8 +1,8 @@
-package com.jwtsecurity.jwtsecurity.repositorios;
+package com.jwtsecurity.repositorios;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.jwtsecurity.jwtsecurity.entidade.Produto;
+import com.jwtsecurity.entidade.Produto;
 
 public interface ProdutoRepositorio extends JpaRepository<Produto, Long>{
 

@@ -1,17 +1,18 @@
-package com.jwtsecurity.jwtsecurity.entidade;
+package com.jwtsecurity.entidade;
 
 import java.io.Serializable;
 import java.util.Collection;
 import java.util.List;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
 import lombok.Data;
 
 @Data
@@ -28,7 +29,7 @@ public class Usuario implements UserDetails, Serializable{
     
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
-		return List.of(new SimpleGrantedAuthority("ROLE-USER"));
+		return List.of(new SimpleGrantedAuthority(role));
 	}
 	@Override
 	public String getUsername() {
