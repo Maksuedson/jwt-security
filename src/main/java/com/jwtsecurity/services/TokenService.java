@@ -1,5 +1,6 @@
 package com.jwtsecurity.services;
 
+import java.time.Instant;
 import java.time.LocalDateTime;
 import java.time.ZoneOffset;
 
@@ -19,10 +20,7 @@ public class TokenService {
 				.withIssuer("Produtos")
 				.withSubject(usuario.getUsername())
 				.withClaim("id", usuario.getId())
-				.withExpiresAt(LocalDateTime.now()
-						//.plusMinutes(10)
-						.plusSeconds(30)
-						.toInstant(ZoneOffset.of("-03:00")))
+				.withExpiresAt(dataExpiracao())
 				.sign(Algorithm.HMAC256(SECRETA));
 				
 	}
@@ -31,6 +29,13 @@ public class TokenService {
 		return JWT.require(Algorithm.HMAC256(SECRETA))
 				.withIssuer("Produtos")
 				.build().verify(token).getSubject();
+	}
+	
+	private Instant dataExpiracao() {
+		return LocalDateTime.now()
+				//.plusMinutes(10)
+				.plusSeconds(60)
+				.toInstant(ZoneOffset.of("-03:00"));
 	}
 
 }
