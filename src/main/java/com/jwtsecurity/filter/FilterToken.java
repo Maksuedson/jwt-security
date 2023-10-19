@@ -1,4 +1,4 @@
-package com.jwtsecurity.secuity;
+package com.jwtsecurity.filter;
 
 import java.io.IOException;
 
