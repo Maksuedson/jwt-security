@@ -12,8 +12,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.jwtsecurity.dto.ProdutoDto;
 import com.jwtsecurity.entidade.Produto;
 import com.jwtsecurity.repositorios.ProdutoRepositorio;
+import com.jwtsecurity.services.ProdutoService;
 
 @RestController
 @RequestMapping("produtos")
@@ -21,10 +23,13 @@ public class ProdutoController {
 	
 	@Autowired
 	private ProdutoRepositorio repo;
+	
+	@Autowired
+	private ProdutoService produtoService;
 
 	@PostMapping
-	public void save(@RequestBody Produto produto) {
-		repo.save(produto);
+	public void save(@RequestBody ProdutoDto produtoDto) {
+		produtoService.save(produtoDto);
 	}
 	
 	@GetMapping
