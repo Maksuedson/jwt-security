@@ -44,16 +44,16 @@ public class FilterToken extends OncePerRequestFilter {
 
 		}
 
-		else {
-			System.out.println("Erro no token");
-			ErroDTO erro = new ErroDTO(401, "Usuario nao autorizado para este sistema");
-			response.setStatus(erro.getStatus());
-			response.setContentType("application/json");
-			ObjectMapper mapper = new ObjectMapper();
-			response.getWriter().print(mapper.writeValueAsString(erro));
-			response.getWriter().flush();
-			return;
-		}
+//		else {
+//			System.out.println("Erro no token");
+//			ErroDTO erro = new ErroDTO(401, "Usuario nao autorizado para este sistema");
+//			response.setStatus(erro.getStatus());
+//			response.setContentType("application/json");
+//			ObjectMapper mapper = new ObjectMapper();
+//			response.getWriter().print(mapper.writeValueAsString(erro));
+//			response.getWriter().flush();
+//			return;
+//		}
 
 		filterChain.doFilter(request, response);
 	}
